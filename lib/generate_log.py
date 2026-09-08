@@ -19,4 +19,21 @@ def generate_log(data):
 
     # STEP 4: Print a confirmation message with the filename
 
-    pass
+  print(f"Log written to {filename}")
+    return filename
+
+
+def fetch_data():
+    """Fetches sample data from external API using requests."""
+    response = requests.get("https://jsonplaceholder.typicode.com/posts/1")
+    if response.status_code == 200:
+        return response.json()
+    return {}
+
+
+if __name__ == "__main__":
+    sample_logs = ["User logged in", "User updated profile", "Report exported"]
+    generate_log(sample_logs)
+
+    post = fetch_data()
+    print("Fetched Post Title:", post.get("title", "No title found"))
