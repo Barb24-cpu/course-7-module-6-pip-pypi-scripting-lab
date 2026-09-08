@@ -2,8 +2,10 @@ from datetime import datetime
 import os
 
 def generate_log(data):
-    # TODO: Implement log generation logic
+    """Generates a log file with timestamped name containing log entries.
 
+    Raises ValueError if input is not a list.
+    """
     # STEP 1: Validate input
     # Hint: Check if data is a list
 
