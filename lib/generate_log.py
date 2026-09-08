@@ -1,5 +1,6 @@
 from datetime import datetime
-import os
+import requests
+
 
 def generate_log(data):
     """Generates a log file with timestamped name containing log entries.
@@ -7,19 +8,19 @@ def generate_log(data):
     Raises ValueError if input is not a list.
     """
     # STEP 1: Validate input
-   if not isinstance(data, list):
+    if not isinstance(data, list):
         raise ValueError("Data must be a list")
 
-    # STEP 2: Generate a filename with today's date (e.g., "log_20250408.txt")
-   filename = f"log_{datetime.now().strftime('%Y%m%d')}.txt"
-    # STEP 3: Write the log entries to a file using File I/O
-   with open(filename, "w") as file:
+    # STEP 2: Generate filename following log_YYYYMMDD.txt
+    filename = f"log_{datetime.now().strftime('%Y%m%d')}.txt"
+
+    # STEP 3: Write entries to file
+    with open(filename, "w") as file:
         for entry in data:
             file.write(f"{entry}\n")
 
-    # STEP 4: Print a confirmation message with the filename
-
-  print(f"Log written to {filename}")
+    # STEP 4: Print confirmation message
+    print(f"Log written to {filename}")
     return filename
 
 
